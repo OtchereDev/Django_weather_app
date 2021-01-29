@@ -19,8 +19,9 @@
             <div class="change">
                 <ion-icon name="close-outline"></ion-icon>
             </div>
-            <form action="" method="post">
-                <input type="text" name="location" id="location" placeholder="Please enter your city">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <input type="text" name="location" id="id_location" placeholder="Please enter your city">
                 <button type="submit">Get weather details</button>
             </form>
         </div>

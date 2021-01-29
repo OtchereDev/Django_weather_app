@@ -121,7 +121,7 @@ body .container .weather_content .change {
 }
 
 body .container .weather_content {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('assets/pexels-eberhard-grossgasteiger-2098427.jpg');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('static/images/pexels-eberhard-grossgasteiger-2098427.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 80%;
@@ -129,7 +129,7 @@ body .container .weather_content {
 }
 
 body .container.day .weather_content {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('assets/pexels-bruno-scramgnon-585759.jpg');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('static/images/pexels-bruno-scramgnon-585759.jpg');
 }
 
 body .container .weather_content .change ion-icon {
