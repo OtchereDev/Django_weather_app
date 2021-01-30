@@ -48,18 +48,38 @@
 
         </div>
         <div class="forcast">
+        {% if forecast_detail %}
+        
+        
+        {% for forecast in forecaste_detail %}
+        
+        
             <div class="forcast_element">
                 <div class="day">
                     <h5>
-                        Tuesday
+                        {{day}}
                     </h5>
                 </div>
                 <div class="day_temp">
                     <h3>
-                        {% if min_temp %}
+                        
                         {{min_temp}} - {{max_temp}} &deg;C
-                        {% endif %}
-                        32 - 33 &deg;C
+                        
+                    </h3>
+                </div>
+            </div>
+
+        {% endfor %}
+        {% else %}
+            <div class="forcast_element">
+                <div class="day">
+                    <h5>
+                        Tuesday
+                    </h5>
+                </div>
+                <div class="day_temp">
+                    <h3>
+                        32.2 -33.3 &deg;C
                     </h3>
                 </div>
             </div>
@@ -71,7 +91,7 @@
                 </div>
                 <div class="day_temp">
                     <h3>
-                        32 &deg;C
+                        32.2 -33.3 &deg;C
                     </h3>
                 </div>
             </div>
@@ -83,7 +103,7 @@
                 </div>
                 <div class="day_temp">
                     <h3>
-                        32 &deg;C
+                        32.2 -33.3 &deg;C
                     </h3>
                 </div>
             </div>
@@ -95,10 +115,12 @@
                 </div>
                 <div class="day_temp">
                     <h3>
-                        32 &deg;C
+                        32.2 -33.3 &deg;C
                     </h3>
                 </div>
             </div>
+
+            {% endif %}
         </div>
 
     </div>
