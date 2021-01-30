@@ -22,4 +22,29 @@ def getTemperatureDet(locationKey):
     return temp_response.json()
 
 
-print(getLocationDet('accra'))
+def getName_LocKey(locationDet):
+
+    return locationDet['EnglishName'],locationDet['Key']
+
+
+def getForecastDet(locKey):
+
+    response = requests.get(f'http://dataservice.accuweather.com/forecasts/v1/daily/5day/{locKey}?apikey={apikey}')
+
+    result=response.json()
+
+    temperatureCont=result['DailyForecasts']
+
+    temperatureValues=[]
+    
+    for i in temperatureCont:
+        current_temp={
+            'min_temp':i['Temperature']['Minimum']['Value'],
+            'max_temp':i['Temperature']['Maximum']['Value'],
+            
+        }
+
+        temperatureValues.append(current_temp)
+
+    return temperatureValues
+
