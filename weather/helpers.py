@@ -1,5 +1,6 @@
 import os 
 import requests
+import datetime
 
 
 apikey=os.getenv('ACCUWEATHER_APIKEY')
@@ -37,8 +38,12 @@ def getForecastDet(locKey):
 
     temperatureValues=[]
     
+    
     for i in temperatureCont:
+        date=datetime.datetime.fromisoformat(i['Date'])
+        
         current_temp={
+            'day':date.strftime('%A'),
             'min_temp':i['Temperature']['Minimum']['Value'],
             'max_temp':i['Temperature']['Maximum']['Value'],
             
