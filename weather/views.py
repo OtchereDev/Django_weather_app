@@ -4,7 +4,7 @@ import requests
 import os
 
 from .forms import searchForm
-from .helpers import getLocationDet,getTemperatureDet
+from .helpers import getLocationDet,getTemperatureDet,getName_LocKey,getForecastDet
 
 
 def home(request):
@@ -17,7 +17,7 @@ def home(request):
 
         if locationDet:
 
-            name,locKey=locationDet['EnglishName'],locationDet['Key']
+            name,locKey=getName_LocKey(locationDet)
 
             temperatureDet=getTemperatureDet(locKey)
 
@@ -30,3 +30,17 @@ def home(request):
     
 
     return render(request,'weather_app/index.html',context)
+
+
+def forecast(request):
+    form =searchForm(request.POST or None)
+
+    context={}
+
+    if form.is_valid():
+        locKey=getLocationDet(request.POST.get('location'))['Key']
+        
+        if locKey:
+            print(getForecastDet(locKey))
+
+    return render(request,'weather_app/forecast.html')
