@@ -20,6 +20,7 @@
         </div>
         <div class="popup_form">
             <form action="" method="post">
+            {% csrf_token %}
                 <input type="text" name="location" id="location" placeholder="Please enter your city">
                 <button type="submit">Get weather details</button>
             </form>
@@ -55,7 +56,10 @@
                 </div>
                 <div class="day_temp">
                     <h3>
-                        32 &deg;C
+                        {% if min_temp %}
+                        {{min_temp}} - {{max_temp}} &deg;C
+                        {% endif %}
+                        32 - 33 &deg;C
                     </h3>
                 </div>
             </div>
