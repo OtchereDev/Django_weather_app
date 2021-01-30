@@ -26,14 +26,18 @@
             </form>
         </div>
     </div>
-    <div class="container">
+    <div class="container {% if is_day %}day{% endif %}">
         <div class="weather_content">
             <div class="change">
                 <ion-icon name="cog-outline"></ion-icon>
             </div>
             <div class="city_name">
                 <h2>
+                    {% if city_name %}
+                        {{city_name}}
+                    {% else %}
                     City Name
+                    {% endif %}
                 </h2>
             </div>
             <div class="weather_icon">
@@ -42,7 +46,11 @@
             </div>
             <div class="weather_temp">
                 <h1>
-                    16 &deg;C
+                    {% if temperature %}
+                    {{temperature}}
+                    {% else %}
+                    16
+                    {% endif %} &deg;C
                 </h1>
             </div>
 
