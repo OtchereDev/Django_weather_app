@@ -51,3 +51,39 @@ def getForecastDet(locKey):
 
     return temperatureValues
 
+
+def getForecastWeather(request):
+    city=request.POST.get('location') or 'accra'
+
+    name,locKey=getName_LocKey( getLocationDet(city))
+        
+    if locKey:
+        currTemp=getTemperatureDet(locKey)
+        forecastTemp=getForecastDet(locKey)
+        context={
+            'city_name':name,
+            'is_day':currTemp[0]['IsDayTime'],
+            'temperature':currTemp[0]['Temperature']['Metric']['Value'],
+            'forecast_detail':forecastTemp[1:],
+        }
+
+        return context
+
+
+def getCurrentWeather(request):
+    location=request.POST.get('location') or 'accra'
+    locationDet=getLocationDet(location)
+
+    if locationDet:
+
+        name,locKey=getName_LocKey(locationDet)
+
+        temperatureDet=getTemperatureDet(locKey)
+
+        context={
+            'city_name':name,
+            'is_day':temperatureDet[0]['IsDayTime'],
+            'temperature':temperatureDet[0]['Temperature']['Metric']['Value']
+        }
+
+        return context
