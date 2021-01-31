@@ -59,19 +59,19 @@
         {% if forecast_detail %}
         
         
-        {% for forecast in forecaste_detail %}
+        {% for forecast in forecast_detail %}
         
         
             <div class="forcast_element">
                 <div class="day">
                     <h5>
-                        {{day}}
+                        {{forecast.day}}
                     </h5>
                 </div>
                 <div class="day_temp">
                     <h3>
                         
-                        {{min_temp}} - {{max_temp}} &deg;C
+                        {{forecast.min_temp}} - {{forecast.max_temp}} &deg;C
                         
                     </h3>
                 </div>
