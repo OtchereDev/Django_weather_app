@@ -35,9 +35,23 @@ def home(request):
 def forecast(request):
     form =searchForm(request.POST or None)
 
-    context={}
+    # context={}
 
-    city=request.POST.get('location')or 'accra'
+    city=request.POST.get('location') or 'accra'
+
+    print(city)
+
+    name,locKey=getName_LocKey( getLocationDet(city))
+        
+    if locKey:
+        currTemp=getTemperatureDet(locKey)
+        forecastTemp=getForecastDet(locKey)
+        context={
+            'city_name':name,
+            'is_day':currTemp[0]['IsDayTime'],
+            'temperature':currTemp[0]['Temperature']['Metric']['Value'],
+            'forecast_detail':forecastTemp[1:],
+        }
 
     if form.is_valid():
         name,locKey=getName_LocKey( getLocationDet(city))
