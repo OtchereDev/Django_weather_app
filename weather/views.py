@@ -37,8 +37,10 @@ def forecast(request):
 
     context={}
 
+    city=request.POST.get('location')or 'accra'
+
     if form.is_valid():
-        name,locKey=getName_LocKey( getLocationDet(request.POST.get('location')))
+        name,locKey=getName_LocKey( getLocationDet(city))
         
         if locKey:
             currTemp=getTemperatureDet(locKey)
@@ -47,7 +49,9 @@ def forecast(request):
                 'city_name':name,
                 'is_day':currTemp[0]['IsDayTime'],
                 'temperature':currTemp[0]['Temperature']['Metric']['Value'],
-                'forecaste_detail':forecastTemp,
+                'forecast_detail':forecastTemp[1:],
             }
 
-    return render(request,'weather_app/forecast.html')
+            print(context)
+
+    return render(request,'weather_app/forecast.html',context)
