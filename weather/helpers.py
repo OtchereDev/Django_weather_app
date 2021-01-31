@@ -8,11 +8,9 @@ apikey=os.getenv('ACCUWEATHER_APIKEY')
 
 def getLocationDet(city):
 
-    respone=requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/search?apikey={apikey}&q={city}')
+    response=requests.get(f'http://dataservice.accuweather.com/locations/v1/cities/search?apikey={apikey}&q={city}')
 
-    # return bool(respone.json())
-
-    return respone.json()[0] if respone.json() else None
+    return response.json()[0] if response.json() else None
 
 
 
